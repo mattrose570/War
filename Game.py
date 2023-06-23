@@ -7,6 +7,7 @@ class Game:
         self.deck = Deck()
         self.player1 = Player(input("Player 1's name: "))
         self.player2 = Player(input("Player 2's name: "))
+        
 
     def wins(self, winner: Player) -> None:
         w = f"{winner.name} wins this round"
@@ -25,6 +26,21 @@ class Game:
         
         else:
             return "It was a tie."
+                
+    def another_game(self):
+        decision = input("Would you like to start another game? (y or n): ")
+        while decision.lower() != "y" and decision.lower() != "n":
+            decision = input("Would you like to start another game? (y or n): ")
+        
+            if decision == "y":
+                newGame = Game()
+                newGame.play_game()
+
+            
+        else:
+            exit(0)
+
+
 
     def play_game(self):
         cards = self.deck.cards
@@ -49,4 +65,5 @@ class Game:
                 self.wins(self.player2)
 
         print(self.winner(self.player1, self.player2))
+        self.another_game()
 
